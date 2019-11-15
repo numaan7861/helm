@@ -17,10 +17,12 @@ tolerations: []
 affinity: {}
 
 gremlin:
+  serviceUrl: "https://api.gremlin.com/v1"
   apparmor: ""
   teamID: ""
   hostPID: false
   hostNetwork: false
+  installK8sClient: true
   client:
     secretName: gremlin-team-cert
     cert: file:///var/lib/gremlin/cert/gremlin.cert
