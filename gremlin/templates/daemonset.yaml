@@ -43,6 +43,7 @@ spec:
         {{- end }}
       {{- end }}
     spec:
+      automountServiceAccountToken: false
       serviceAccountName: gremlin
       {{- if .Values.affinity }}
       affinity: {{ toYaml .Values.affinity | trimSuffix "\n" | nindent 8 }}
@@ -85,6 +86,8 @@ spec:
         securityContext:
           capabilities:
             add: {{ toYaml .Values.gremlin.podSecurity.capabilities | nindent 14 }}
+          privileged: false
+          readOnlyRootFilesystem: true
           {{- if .Values.gremlin.podSecurity.seLinuxOptions }}
           seLinuxOptions: {{ toYaml .Values.gremlin.podSecurity.seLinuxOptions | nindent 12 }}
           {{- end }}
